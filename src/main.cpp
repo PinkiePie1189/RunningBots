@@ -1,12 +1,12 @@
 #include <texture.h>
-
+#include<constants.h>
 #include <cstdio>
 #include <ctime>
 #include <cstdlib>
-
+#include<Map.h>
 Texture *screen;
 
-const int RESOLUTION_W=1280,RESOLUTION_H=720,DISPLAY_MODE=0;
+//const int RESOLUTION_W=1280,RESOLUTION_H=720,DISPLAY_MODE=0;
 
 int main( int argc, char *args[] )
 {
@@ -89,5 +89,22 @@ int main( int argc, char *args[] )
      //Mix_PlayMusic(launcher_background_music,-1);
      //Mix_FadeInMusic(launcher_background_music,-1,8000);
     }
+ bool quit=false;
+ SDL_Event ev;
+ Map* harta=new Map("res/background.png","res/tile.png","res/level.map");
+ while(!quit)
+ {
+     while(SDL_PollEvent(&ev))
+     {
+         if(ev.type==SDL_QUIT)
+         {
+             quit=true;
+         }
+     }
+     harta->Draw(screen,0);
+     Flip_Buffers(screen);
+
+ }
+ delete harta;
  return 0;
 }
