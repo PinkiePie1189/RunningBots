@@ -4,6 +4,7 @@
 #include <ctime>
 #include <cstdlib>
 #include<Map.h>
+#include <level.h>
 Texture *screen;
 
 //const int RESOLUTION_W=1280,RESOLUTION_H=720,DISPLAY_MODE=0;
@@ -91,7 +92,8 @@ int main( int argc, char *args[] )
     }
  bool quit=false;
  SDL_Event ev;
- Map* harta=new Map("res/background.png","res/tile.png","res/level.map");
+ Level level;
+ level.Load();
  while(!quit)
  {
      while(SDL_PollEvent(&ev))
@@ -101,10 +103,11 @@ int main( int argc, char *args[] )
              quit=true;
          }
      }
-     harta->Draw(screen,0);
+     SDL_PumpEvents();
+     level.Handle_Events();
+     level.Print(screen);
      Flip_Buffers(screen);
 
  }
- delete harta;
  return 0;
 }

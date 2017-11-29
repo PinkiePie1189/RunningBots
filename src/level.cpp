@@ -10,16 +10,15 @@ void Level::Load()
 {
  players[1].Load(1);
  players[2].Load(2);
+ map=new Map("res/background.png","res/tile.png","res/level.map");
 }
-
-const int TILE_SIZE=64;
-const int RESOLUTION_W=1280,RESOLUTION_H=720,DISPLAY_MODE=0;
 
 void Level::Print(Texture *_screen)
 {
  int pos_min=std::min(players[1].Get_pos(),players[2].Get_pos());
- players[1].Print(TILE_SIZE*(players[1].Get_pos()-pos_min),RESOLUTION_H-3*TILE_SIZE,_screen);
- players[2].Print(TILE_SIZE*(players[2].Get_pos()-pos_min),RESOLUTION_H-2*TILE_SIZE,_screen);
+ map->Draw(_screen,pos_min);
+ players[1].Print(TILE_LENGTH*(players[1].Get_pos()-pos_min),RESOLUTION_H-3*TILE_LENGTH,_screen);
+ players[2].Print(TILE_LENGTH*(players[2].Get_pos()-pos_min),RESOLUTION_H-2*TILE_LENGTH,_screen);
 }
 
 void Level::Handle_Events()

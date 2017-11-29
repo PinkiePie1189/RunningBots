@@ -2,11 +2,13 @@
 #define LEVEL_H
 
 #include "player.h"
+#include "Map.h"
 
 class Level
 {
  private:
  Player players[3];
+ Map *map;
  int winner=0;
 
  public:
