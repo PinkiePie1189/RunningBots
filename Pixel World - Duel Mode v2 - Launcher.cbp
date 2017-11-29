@@ -39,10 +39,14 @@
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_mixer -lSDL2_image" />
 			<Add directory="./lib" />
 		</Linker>
+		<Unit filename="include/level.h" />
 		<Unit filename="include/library.h" />
+		<Unit filename="include/player.h" />
 		<Unit filename="include/texture.h" />
+		<Unit filename="src/level.cpp" />
 		<Unit filename="src/library.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/player.cpp" />
 		<Unit filename="src/texture.cpp" />
 		<Extensions>
 			<code_completion />
