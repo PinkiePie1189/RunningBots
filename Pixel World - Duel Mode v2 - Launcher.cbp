@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -25,6 +26,7 @@
 					<Add option="-fexpensive-optimizations" />
 					<Add option="-O3" />
 					<Add option="-std=c++11" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -40,10 +42,14 @@
 			<Add directory="./lib" />
 		</Linker>
 		<Unit filename="include/level.h" />
+		<Unit filename="include/Map.h" />
+		<Unit filename="include/constants.h" />
 		<Unit filename="include/library.h" />
 		<Unit filename="include/player.h" />
 		<Unit filename="include/texture.h" />
 		<Unit filename="src/level.cpp" />
+		<Unit filename="res/level.map" />
+		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/library.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/player.cpp" />
