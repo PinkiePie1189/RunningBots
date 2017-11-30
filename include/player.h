@@ -8,7 +8,7 @@ class Player
  private:
  int id=0;
  Texture *skin=NULL;
- int state=0;
+ int state=0,_state=0;
  int pos=0;
  Timer cooldown;
 

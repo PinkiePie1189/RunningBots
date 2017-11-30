@@ -16,6 +16,7 @@ class Map
     private:
         Texture* background_texture=NULL;
         Texture* tile_texture=NULL;
+        Texture* bbackground_texture=NULL;
         std::vector<int> map_configuration;
         int first_tile,last_tile,totalTiles;
 };

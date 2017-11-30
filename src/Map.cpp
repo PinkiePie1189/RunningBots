@@ -3,6 +3,7 @@
 Map::Map(char* path_to_background,char* path_to_tile,char* path_to_config)
 {
     //ctor
+    bbackground_texture=Load_Transparent_Texture("res/background.png");
     background_texture=Load_Transparent_Texture(path_to_background);
     tile_texture=Load_Transparent_Texture(path_to_tile);
     LoadConfigFile(path_to_config);
@@ -15,7 +16,7 @@ Map::~Map()
 
 void Map::Draw(Texture* _screen,int poz_min)
 {
-    Apply_Texture(0,0,background_texture,_screen);
+    Apply_Texture(0,0,bbackground_texture,_screen);
     first_tile=poz_min;
     last_tile=first_tile+(RESOLUTION_W/TILE_LENGTH)-1;
     int posx=0;
@@ -23,8 +24,11 @@ void Map::Draw(Texture* _screen,int poz_min)
     {
         if(map_configuration[i])
         {
-            Apply_Texture(posx,RESOLUTION_H-TILE_LENGTH,tile_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-TILE_LENGTH,background_texture,_screen);
             Apply_Texture(posx,RESOLUTION_H-2*TILE_LENGTH,tile_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-3*TILE_LENGTH,background_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-4*TILE_LENGTH,tile_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-5*TILE_LENGTH,background_texture,_screen);
         }
         else
         {
