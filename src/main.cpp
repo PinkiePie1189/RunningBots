@@ -90,24 +90,7 @@ int main( int argc, char *args[] )
      //Mix_PlayMusic(launcher_background_music,-1);
      //Mix_FadeInMusic(launcher_background_music,-1,8000);
     }
- bool quit=false;
- SDL_Event ev;
  Level level;
- level.Load();
- while(!quit)
- {
-     while(SDL_PollEvent(&ev))
-     {
-         if(ev.type==SDL_QUIT)
-         {
-             quit=true;
-         }
-     }
-     SDL_PumpEvents();
-     level.Handle_Events();
-     level.Print(screen);
-     Flip_Buffers(screen);
-
- }
+ level.Start(screen);
  return 0;
 }

@@ -17,6 +17,9 @@ class Level
  void Print(Texture *_screen);
  void Handle_Events();
  int Get_winner();
+ void Start(Texture *_screen);
+ void Reset();
+ int Finish_Screen(Texture *_screen);
 };
 
 #endif // LEVEL_H

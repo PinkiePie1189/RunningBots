@@ -8,6 +8,13 @@ void Player::Clear()
  Destroy_Texture(skin);
 }
 
+void Player::Reset()
+{
+ state=_state=0;
+ pos=0;
+ cooldown.start();
+}
+
 void Player::Load(int _id)
 {
  id=_id;
@@ -113,4 +120,9 @@ void Player::Handle_Events()
 int Player::Get_pos()
 {
  return pos;
+}
+
+bool Player::Is_jumping()
+{
+ return state==4;
 }

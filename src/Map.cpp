@@ -1,11 +1,13 @@
 #include "Map.h"
 
-Map::Map(char* path_to_background,char* path_to_tile,char* path_to_config)
+Map::Map(char* path_to_background,char* path_to_tile,char* path_to_hole,char* path_to_config)
 {
     //ctor
     bbackground_texture=Load_Transparent_Texture("res/background.png");
     background_texture=Load_Transparent_Texture(path_to_background);
     tile_texture=Load_Transparent_Texture(path_to_tile);
+    hole_texture=Load_Transparent_Texture(path_to_hole);
+    hole1_texture=Load_Transparent_Texture("res/hole1.png");
     LoadConfigFile(path_to_config);
 }
 
@@ -29,10 +31,26 @@ void Map::Draw(Texture* _screen,int poz_min)
             Apply_Texture(posx,RESOLUTION_H-3*TILE_LENGTH,background_texture,_screen);
             Apply_Texture(posx,RESOLUTION_H-4*TILE_LENGTH,tile_texture,_screen);
             Apply_Texture(posx,RESOLUTION_H-5*TILE_LENGTH,background_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-6*TILE_LENGTH,tile_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-7*TILE_LENGTH,background_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-8*TILE_LENGTH,tile_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-9*TILE_LENGTH,background_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-10*TILE_LENGTH,tile_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-11*TILE_LENGTH,background_texture,_screen);
         }
         else
         {
-            //display hole
+            Apply_Texture(posx,RESOLUTION_H-TILE_LENGTH,hole1_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-2*TILE_LENGTH,hole_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-3*TILE_LENGTH,hole1_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-4*TILE_LENGTH,hole_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-5*TILE_LENGTH,hole1_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-6*TILE_LENGTH,hole_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-7*TILE_LENGTH,hole1_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-8*TILE_LENGTH,hole_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-9*TILE_LENGTH,hole1_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-10*TILE_LENGTH,hole_texture,_screen);
+            Apply_Texture(posx,RESOLUTION_H-11*TILE_LENGTH,hole1_texture,_screen);
         }
         posx+=TILE_LENGTH;
     }
@@ -51,3 +69,12 @@ void Map::LoadConfigFile(char* path_to_config)
     fclose(fin);
 }
 
+bool Map::Is_hole(int _pos)
+{
+ return !map_configuration[_pos];
+}
+
+int Map::Get_size()
+{
+ return map_configuration.size();
+}

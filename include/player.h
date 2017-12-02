@@ -18,6 +18,8 @@ class Player
  void Print(int x,int y,Texture *_screen);
  void Handle_Events();
  int Get_pos();
+ bool Is_jumping();
+ void Reset();
 };
 
 #endif // PLAYER_H
