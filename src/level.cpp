@@ -1,6 +1,6 @@
 #include "level.h"
 
-const int MAX_DISTANCE_BETWEEN_PLAYERS=19;
+const int MAX_DISTANCE_BETWEEN_PLAYERS=19,SCROLLING_UNIT=18;
 
 void Level::Clear()
 {
@@ -17,7 +17,8 @@ void Level::Load()
 
 void Level::Print(Texture *_screen)
 {
- int pos_min=std::min(players[1].Get_pos(),players[2].Get_pos());
+ int pos_min=std::min(players[1].Get_pos(),players[2].Get_pos())/SCROLLING_UNIT;
+ pos_min*=SCROLLING_UNIT;
  map->Draw(_screen,pos_min);
  players[1].Print(TILE_LENGTH*(players[1].Get_pos()-pos_min),RESOLUTION_H-5*TILE_LENGTH,_screen);
  players[2].Print(TILE_LENGTH*(players[2].Get_pos()-pos_min),RESOLUTION_H-3*TILE_LENGTH,_screen);
